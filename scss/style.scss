@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+
+// Value
+$index: calc(1vw + 1vh);
+$height: 110vh;
+$text-color: #fff;
+
+// Mixins
+@mixin section {
+	position: relative;
+	width: 100%;
+	height: $height;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+@mixin layer {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center center;
+	will-change: transform;
+}
+@mixin content {
+	position: relative;
+	color: $text-color;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+* {
+	font-family: "Poppins", sans-serif;
+	box-sizing: border-box;
+	font-weight: 400;
+}
+
+body {
+	cursor: default;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+// === HEADER ===
+.header {
+	@include section;
+
+	&:after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100px;
+		background: linear-gradient(rgba(72, 7, 42, 0), rgba(72, 7, 42, 1));
+		z-index: 10;
+	}
+}
+
+.header-content {
+	@include content;
+	transform: translate3d(0, calc(var(--scroll) / 4), 0);
+	z-index: 3;
+	text-shadow: 0px 0px 30px #282bac;
+	will-change: transform;
+
+	&__title {
+		font-size: calc($index * 2.2);
+		letter-spacing: calc($index / 6);
+		font-weight: 800;
+	}
+
+	&__subtitle {
+		font-size: calc($index * 0.8);
+		letter-spacing: calc($index / 12);
+		font-weight: 600;
+	}
+}
+
+.header-layers {
+	&__layer {
+		@include layer;
+	}
+
+	&__effects {
+		z-index: 3;
+		transform: translate3d(calc(var(--scroll) / 2 * -1), calc(var(--scroll) / 4), 0);
+	}
+
+	&__floor {
+		z-index: 5;
+		transform: translate3d(0, calc(var(--scroll) / 10), 0);
+	}
+
+	&__mountains {
+		z-index: 4;
+		transform: translate3d(0, calc(var(--scroll) / 6), 0);
+	}
+
+	&__planet {
+		z-index: 2;
+		transform: translate3d(calc(var(--scroll) / 15 * -1), calc(var(--scroll) / 10), 0);
+	}
+
+	&__bg {
+		z-index: 1;
+		// transform: translate3d(0, calc(var(--scroll) / 4), 0);
+	}
+}
+
+// === HEADER END===
+
+// === CAVE ===
+.cave {
+	@include section;
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		height: 60px;
+		background: linear-gradient(rgba(72, 7, 42, 1), rgba(72, 7, 42, 0));
+		z-index: 10;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 60px;
+		background: linear-gradient(rgba(72, 7, 42, 0), rgb(49, 18, 100));
+		z-index: 10;
+	}
+}
+
+.cave-content {
+	@include content;
+	width: min(90%, 600px);
+	transform: translate3d(0, calc(var(--scroll) / 4 - 40vh), 0);
+	z-index: 2;
+
+	&__title {
+		font-size: calc($index * 1.4);
+		letter-spacing: calc($index / 8);
+		font-weight: 800;
+	}
+
+	&__subtitle {
+		font-size: calc($index * 0.6);
+		letter-spacing: calc($index / 12);
+		font-weight: 600;
+	}
+}
+
+.cave-layers {
+	&__layer {
+		@include layer;
+	}
+
+	&__floor {
+		z-index: 4;
+		// transform: translate3d(0, calc(var(--scroll) / 8 - 10vh), 0);
+	}
+
+	&__stalactite {
+		z-index: 4;
+		transform: translate3d(0, calc(var(--scroll) / 10 - 8vh), 0);
+	}
+
+	&__base {
+		z-index: 3;
+	}
+
+	&__mountains {
+		z-index: 2;
+		transform: translate3d(0, calc(var(--scroll) / 10 * -1 + 20vh), 0);
+	}
+
+	&__background {
+		z-index: 1;
+	}
+}
+
+// === CAVE END===
+
+// === SEA ===
+.sea {
+	@include section;
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		height: 60px;
+		background: linear-gradient(rgb(49, 18, 100), rgba(7, 8, 72, 0));
+		z-index: 2;
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 50px;
+		background: linear-gradient(rgba(7, 8, 72, 0), rgb(49, 18, 100));
+		z-index: 5;
+	}
+}
+.sea-content {
+	@include content;
+	margin-top: -120vh;
+	transform: translate3d(0, calc(var(--scroll) / 4), 0);
+	z-index: 2;
+
+	&__title {
+		font-size: calc($index * 1.6);
+		letter-spacing: calc($index / 8);
+		font-weight: 800;
+	}
+
+	&__subtitle {
+		font-size: calc($index * 0.6);
+		letter-spacing: calc($index / 12);
+		font-weight: 600;
+	}
+}
+.sea-layers {
+	&__layer {
+		@include layer;
+	}
+
+	&__cable {
+		z-index: 3;
+	}
+
+	&__background {
+		z-index: 1;
+	}
+}
+// === SEA END===
